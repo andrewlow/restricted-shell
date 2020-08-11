@@ -1,7 +1,6 @@
 FROM alpine:latest
 
-# The username
-ARG username=roo
+ARG username=user
 
 # add openssh and rsync then clean up
 RUN apk add --update openssh && \

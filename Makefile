@@ -1,18 +1,20 @@
 #
 #
+include config.mk
+#
 all: etc key.pub
-	docker build --tag restricted-shell .
+	docker build --build-arg username=$(USER) --tag restricted-shell .
 
 # Run the container
 #
 start:
-	docker run -d -p 8080:22 --name restricted restricted-shell 
+	docker run -d -p $(PORT):22 -v $(STORAGE):/home/$(USER)/external --name restricted-shell restricted-shell 
 
 # Stop and remove the container
 #
 stop:
-	docker stop restricted
-	docker rm restricted
+	docker stop restricted-shell
+	docker rm restricted-shell
 
 # Generate secrets if not found
 #
@@ -26,5 +28,6 @@ etc:
 # Warn if key.pub file isn't present
 #
 key.pub:
-	@echo "\nYou need to copy your public key into the pub.key file\n" \
+	@echo "\nYou need to copy your public key into the key.pub file\n" \
 	&& exit 1
+

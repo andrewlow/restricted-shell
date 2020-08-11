@@ -1,0 +1,11 @@
+# Configuration file
+
+# Username inside of the restricted shell
+USER=roo
+
+# External port, passed to docker for mapping
+PORT=8080
+
+# Path to host volume to mount
+STORAGE=/tmp
+
