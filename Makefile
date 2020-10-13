@@ -8,7 +8,7 @@ all: etc key.pub
 # Run the container
 #
 start:
-	docker run -d -p $(PORT):22 -v $(STORAGE):/home/$(USER)/external --name restricted-shell restricted-shell 
+	docker run -d -p $(PORT):22 -v $(STORAGE):/home/$(USER)/external --name restricted-shell --restart unless-stopped restricted-shell 
 
 # Stop and remove the container
 #
