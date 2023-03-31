@@ -18,3 +18,10 @@ $ make stop
 ```
 
 Above assumes you are logged into a machine as the user declared in the config.mk file and have the matching private key to the `./pub.key`
+
+When the alpine:latest base image is updated, you can easily update your image with
+```
+$ make update
+```
+
+There is a companion 'sending' container for managing [encrypted backups](https://github.com/andrewlow/encrypted-backup)
